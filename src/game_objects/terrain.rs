@@ -22,7 +22,7 @@ use std::hash::{Hash, Hasher};
 
 use image::{GrayImage, Luma};
 
-use crate::physics_object::NoUserData;
+use crate::physics::NoUserData;
 type BodyPtr<D> = Rc<RefCell<B2body<D>>>;
 type WorldPtr<D> = Rc<RefCell<B2world<D>>>;
 
