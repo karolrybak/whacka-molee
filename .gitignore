@@ -1,0 +1,8 @@
+.direnv
+.envrc
+aidb
+assets/*
+!assets/locales/*
+dbg
+target
+Cargo.lock

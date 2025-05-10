@@ -1,0 +1,135 @@
+{
+    "NOUN_VEGETABLE": [
+      "avocado", "tomato", "onion", "cilantro", "jalapeño", "pepper", "corn", "bean",
+      "habanero", "serrano", "chili", "carrot", "celery", "radish", "cucumber",
+      "zucchini", "eggplant", "lettuce", "spinach", "basil", "mint", "oregano", "parsley",
+      "garlic", "potato", "cabbage", "broccoli", "cauliflower", "pumpkin", "squash", 
+      "mushroom", "kale", "leek", "scallion", "shallot", "ginger", "arugula", "beet"
+    ],
+    
+    "NOUN_DISH": [
+      "guacamole", "salsa", "pico", "gallo", "nacho", "tostada", "burrito", "taco",
+      "dip", "sauce", "spread", "puree", "mash", "chips", "quesadilla", "enchilada",
+      "chimichanga", "chalupa", "fajita", "bowl", "platter", "combo", "mix", "blend"
+    ],
+    
+    "NOUN_KITCHEN": [
+      "pestle", "masher", "blender", "knife", "chopper", "grinder", "mortar", "bowl",
+      "mallet", "fork", "spoon", "ladle", "pot", "pan", "cutting board", "mixer",
+      "shredder", "slicer", "dicer", "zester", "peeler", "strainer", "whisk", "spatula"
+    ],
+    
+    "NOUN_WEAPON": [
+      "catapult", "trebuchet", "shield", "helmet", "artillery", "bombard", "ammunition",
+      "grenade", "cannon", "ballista", "battering ram", "crossbow", "longbow", "spear",
+      "pike", "halberd", "mace", "flail", "axe", "sword", "dagger", "slingshot", "bomb",
+      "mine", "mortar", "rocket", "launcher", "blaster", "launcher", "musket", "rifle"
+    ],
+    
+    "NOUN_VEHICLE": [
+      "tank", "battleship", "carrier", "destroyer", "submarine", "aircraft", "helicopter",
+      "jeep", "transport", "armored car", "siege tower", "war wagon", "chariot", "dreadnought",
+      "cruiser", "frigate", "gunboat", "bomber", "fighter", "scout", "warship", "artillery truck"
+    ],
+    
+    "NOUN_BATTLE_STRUCTURE": [
+      "fortification", "bunker", "outpost", "barricade", "moat", "rampart", "wall", 
+      "tower", "turret", "fortress", "castle", "citadel", "stronghold", "bastion",
+      "redoubt", "bulwark", "garrison", "blockhouse", "battlement", "palisade", "trench"
+    ],
+    
+    "NOUN_MILITARY_UNIT": [
+      "battalion", "army", "squad", "platoon", "regiment", "formation", "division", "corps", 
+      "patrol", "squadron", "company", "brigade", "legion", "phalanx", "cavalry", "infantry",
+      "vanguard", "rearguard", "flank", "detachment", "taskforce", "commandos", "elite", "guard"
+    ],
+    
+    "NOUN_MILITARY_RANK": [
+      "general", "admiral", "captain", "commander", "lieutenant", "sergeant", "corporal",
+      "private", "colonel", "major", "ensign", "officer", "cadet", "recruit", "grunt",
+      "soldier", "warrior", "fighter", "trooper", "sentinel", "guardian", "defender", "attacker"
+    ],
+    
+    "NOUN_BATTLE_CONCEPT": [
+      "battlefield", "siege", "victory", "defeat", "strategy", "tactic", "combat",
+      "conflict", "alliance", "frontline", "attack", "defense", "ambush", "assault",
+      "charge", "flanking", "maneuver", "conquest", "invasion", "retreat", "advance",
+      "reinforcement", "encirclement", "breakthrough", "skirmish", "battle", "war"
+    ],
+    
+    "NOUN_TERRAIN": [
+      "garden", "mountain", "valley", "field", "plateau", "trench", "gulch", "ridge",
+      "basin", "hill", "gorge", "lowland", "height", "plain", "badland",
+      "canyon", "peak", "forest", "jungle", "desert", "swamp", "marsh", "meadow",
+      "prairie", "grove", "ravine", "dune", "island", "peninsula", "coast", "crater"
+    ],
+    
+    "ADJ_TASTE": [
+      "spicy", "hot", "mild", "tangy", "zesty", "sour", "bitter", "sweet", "savory",
+      "salty", "pungent", "aromatic", "flavorful", "tasty", "delicious", "scrumptious",
+      "bland", "rich", "hearty", "mouthwatering", "appetizing", "refreshing"
+    ],
+    
+    "ADJ_TEXTURE": [
+      "chunky", "creamy", "smooth", "crunchy", "crispy", "soft", "hard", "mushy",
+      "firm", "tender", "juicy", "dry", "sticky", "gooey", "velvety", "silky",
+      "grainy", "fibrous", "chewy", "brittle", "flaky", "crumbly"
+    ],
+    
+    "ADJ_BATTLE": [
+      "tactical", "strategic", "fierce", "battle-hardened", "victorious", "defeated",
+      "armored", "fortified", "militant", "aggressive", "defensive", "overwhelming",
+      "formidable", "explosive", "ruthless", "unrelenting", "valiant", "legendary",
+      "bold", "triumphant", "dominant", "mighty", "powerful", "intimidating", "fearsome",
+      "relentless", "unstoppable", "devastating", "brutal", "merciless", "heroic"
+    ],
+    
+    "ADJ_STATE": [
+      "whacked", "smashed", "mashed", "diced", "sliced", "scorched", "crushed", "pulverized",
+      "minced", "chopped", "blended", "pureed", "grated", "peeled", "roasted", "seared",
+      "battered", "beaten", "pounded", "shredded", "torn", "ripped", "broken", "split"
+    ],
+    
+    "ADJ_QUALITY": [
+      "ripe", "fresh", "green", "organic", "raw", "prepared", "seasoned", "prime",
+      "choice", "select", "premium", "gourmet", "garden-fresh", "farm-to-table", "local",
+      "wild", "cultivated", "sustainable", "artisanal", "handcrafted", "homegrown"
+    ],
+    
+    "VERB_ACTION": [
+      "smash", "whack", "crush", "mash", "dice", "slice", "throw", "launch", "catapult",
+      "bombard", "attack", "defend", "conquer", "fortify", "assault", "advance", "retreat",
+      "siege", "harvest", "mix", "chop", "blend", "scoop", "deploy", "ambush", "surround",
+      "overwhelm", "destroy", "demolish", "obliterate", "annihilate", "charge", "engage",
+      "strike", "conquer", "vanquish", "overcome", "overpower", "defeat", "rout",
+      "repel", "resist", "endure", "withstand", "push", "pull", "topple", "break" 
+    ],
+    
+    "VERB_ING": [
+      "smashing", "whacking", "crushing", "mashing", "dicing", "slicing", "throwing", 
+      "launching", "catapulting", "bombarding", "attacking", "defending", "conquering", 
+      "fortifying", "assaulting", "advancing", "retreating", "sieging", "harvesting", 
+      "mixing", "chopping", "blending", "scooping", "deploying", "ambushing", "surrounding",
+      "overwhelming", "destroying", "demolishing", "obliterating", "annihilating",
+      "charging", "engaging", "striking", "vanquishing", "overcoming", "overpowering"
+    ],
+    
+    "YEAR": [
+      "1920", "1935", "1942", "1956", "1968", "1973", "1984", "1991", "1999", "2001",
+      "2008", "2012", "2016", "2020", "2023", "2025", "2030", "2050"
+    ],
+    
+    "TERRAIN_PREFIX": [
+      "Mount", "Valley of", "Fields of", "Plateau of", "Trenches of", "Gulch of", 
+      "Ridge of", "Basin of", "Hills of", "Gorge of", "Fortress of", "Lowlands of", 
+      "Heights of", "Plains of", "Badlands of", "Gardens of", "Canyon of", "Peaks of",
+      "Domain of", "Kingdom of", "Empire of", "Republic of", "State of", "Territory of",
+      "Province of", "Duchy of", "Prefecture of", "Wastes of", "Ruins of", "Remains of"
+    ],
+    
+    "NUMBER": [
+      "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten",
+      "Eleven", "Twelve", "Thirteen", "Twenty", "Thirty", "Forty", "Fifty", "Hundred",
+      "Thousand", "Million", "Billion", "1st", "2nd", "3rd", "4th", "5th", "10th", "100th"
+    ]
+  }
