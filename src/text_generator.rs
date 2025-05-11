@@ -128,7 +128,7 @@ impl WhackaMoleeGenerator {
     }
 
     pub fn generate_terrain_name(&self) -> String {
-        if let Some(template) = self.templates.terrain_name_templates.choose(&mut rand::thread_rng()) {
+        if let Some(template) = self.templates.terrain_name_templates.choose(&mut rand::rng()) {
             self.process_template(template)
         } else {
             warn!("TextGen: No terrain name templates available.");
