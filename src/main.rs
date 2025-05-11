@@ -1,15 +1,15 @@
 // src/main.rs
+// version:0.0.2
+// ----START OF FILE----
 use bevy::prelude::*;
 
 mod game_states;
 mod localization;
 mod text_generator;
-mod main_menu; // <--- ADD THIS
 
 use game_states::AppState;
 use localization::LocalizationPlugin;
 use text_generator::TextGeneratorPlugin;
-use main_menu::MainMenuPlugin; // <--- ADD THIS
 
 fn main() {
     App::new()
@@ -25,13 +25,13 @@ fn main() {
         .init_state::<AppState>()
         .add_plugins(LocalizationPlugin)
         .add_plugins(TextGeneratorPlugin)
-        .add_plugins(MainMenuPlugin) // <--- ADD THIS
-        .add_systems(Startup, initial_setup_system) // Renamed for clarity
+        .add_systems(Startup, setup)
         .run();
 }
 
-// Renamed to avoid conflict if 'setup' is a common name
-fn initial_setup_system(mut app_state: ResMut<NextState<AppState>>) {
-    // This correctly transitions to MainMenu after initial setup
-    app_state.set(AppState::MainMenu);
+fn setup(mut app_state_next_state: ResMut<NextState<AppState>>) {
+    app_state_next_state.set(AppState::MainMenu);
 }
+// ----END OF FILE----
+// src/main.rs
+// version:0.0.2
