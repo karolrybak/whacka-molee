@@ -4,7 +4,7 @@ name = "whacka_molee_bevy"
 version = "0.2.0"
 
 [dependencies]
-bevy = { version = "0.15.3" }
+bevy = { version = "0.13.2" }
 earcut = "0.4.4"
 fastnoise-lite = "1.1.1"
 rand = "0.9.1"
