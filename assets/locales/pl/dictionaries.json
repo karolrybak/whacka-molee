@@ -1,0 +1,116 @@
+{
+  "NOUN_VEGETABLE": [
+    "awokado", "pomidor", "cebula", "kolendra", "jalapeño", "papryka", "kukurydza", "fasola",
+    "habanero", "serrano", "chili", "marchew", "seler", "rzodkiewka", "ogórek",
+    "cukinia", "bakłażan", "sałata", "szpinak", "bazylia", "mięta", "oregano", "pietruszka",
+    "czosnek", "ziemniak", "kapusta", "brokuł", "kalafior", "dynia", "kabaczek", 
+    "grzyb", "jarmuż", "por", "dymka", "szalotka", "imbir", "rukola", "burak"
+  ],
+  "NOUN_DISH": [
+    "guacamole", "salsa", "pico de gallo", "nachosy", "tostada", "burrito", "taco",
+    "dip", "sos", "pasta", "purée", "papka", "chipsy", "quesadilla", "enchilada",
+    "chimichanga", "chalupa", "fajita", "miska", "talerz", "zestaw", "miks", "mieszanka"
+  ],
+  "NOUN_KITCHEN": [
+    "moździerz", "tłuczek", "blender", "nóż", "siekacz", "młynek", "moździerz", "miska",
+    "młotek", "widelec", "łyżka", "chochla", "garnek", "patelnia", "deska do krojenia", "mikser",
+    "szatkownica", "krajalnica", "kostkownica", "skrobak do cytrusów", "obieraczka", "cedzak", "trzepaczka", "szpatułka"
+  ],
+  "NOUN_WEAPON": [
+    "katapulta", "trebusz", "tarcza", "hełm", "artyleria", "bombarda", "amunicja",
+    "granat", "armata", "balista", "taran", "kusza", "długi łuk", "włócznia",
+    "pika", "halabarda", "buława", "korbacz", "topór", "miecz", "sztylet", "proca", "bomba",
+    "mina", "moździerz", "rakieta", "wyrzutnia", "miotacz", "karabin skałkowy", "karabin"
+  ],
+  "NOUN_VEHICLE": [
+    "czołg", "pancernik", "lotniskowiec", "niszczyciel", "okręt podwodny", "samolot", "helikopter",
+    "jeep", "transporter", "samochód pancerny", "wieża oblężnicza", "wóz bojowy", "rydwan", "drednot",
+    "krążownik", "fregata", "kanonierka", "bombowiec", "myśliwiec", "zwiadowca", "okręt wojenny", "ciężarówka artyleryjska"
+  ],
+  "NOUN_BATTLE_STRUCTURE": [
+    "fortyfikacja", "bunkier", "placówka", "barykada", "fosa", "wał", "mur", 
+    "wieża", "baszta", "forteca", "zamek", "cytadela", "twierdza", "bastion",
+    "reduta", "bastion", "garnizon", "blokhauz", "blanka", "palisada", "okop"
+  ],
+  "NOUN_MILITARY_UNIT": [
+    "batalion", "armia", "drużyna", "pluton", "regiment", "formacja", "dywizja", "korpus", 
+    "patrol", "szwadron", "kompania", "brygada", "legion", "falanga", "kawaleria", "piechota",
+    "awangarda", "ariergarda", "flanka", "oddział", "grupa zadaniowa", "komandosi", "elita", "gwardia"
+  ],
+  "NOUN_MILITARY_RANK": [
+    "generał", "admirał", "kapitan", "komandor", "porucznik", "sierżant", "kapral",
+    "szeregowy", "pułkownik", "major", "chorąży", "oficer", "kadet", "rekrut", "żołnierz",
+    "wojownik", "bojownik", "żołnierz", "wartownik", "strażnik", "obrońca", "atakujący"
+  ],
+  "NOUN_BATTLE_CONCEPT": [
+    "pole bitwy", "oblężenie", "zwycięstwo", "porażka", "strategia", "taktyka", "walka",
+    "konflikt", "sojusz", "linia frontu", "atak", "obrona", "zasadzka", "szturm",
+    "szarża", "flankowanie", "manewr", "podbój", "inwazja", "odwrót", "nacieranie",
+    "posiłki", "okrążenie", "przełamanie", "potyczka", "bitwa", "wojna"
+  ],
+  "NOUN_TERRAIN": [
+    "ogród", "góra", "dolina", "pole", "płaskowyż", "okop", "wąwóz", "grzbiet",
+    "kotlina", "wzgórze", "wąwóz", "nizina", "wzniesienie", "równina", "pustkowie",
+    "kanion", "szczyt", "las", "dżungla", "pustynia", "bagno", "moczar", "łąka",
+    "preria", "gaj", "jar", "wydma", "wyspa", "półwysep", "wybrzeże", "krater"
+  ],
+  "ADJ_TASTE": [
+    "pikantny", "ostry", "łagodny", "cierpki", "zadziorny", "kwaśny", "gorzki", "słodki", "słony",
+    "słony", "ostry", "aromatyczny", "smakowity", "smaczny", "pyszny", "wyśmienity",
+    "mdły", "bogaty", "pożywny", "apetyczny", "apetyczny", "orzeźwiający"
+  ],
+  "ADJ_TEXTURE": [
+    "gruboziarnisty", "kremowy", "gładki", "chrupiący", "chrupki", "miękki", "twardy", "papkowaty",
+    "jędrny", "delikatny", "soczysty", "suchy", "lepki", "kleisty", "aksamitny", "jedwabisty",
+    "ziarnisty", "włóknisty", "gumowaty", "kruchy", "płatkowaty", "kruszący się"
+  ],
+  "ADJ_BATTLE": [
+    "taktyczny", "strategiczny", "zaciekły", "zaprawiony w boju", "zwycięski", "pokonany",
+    "opancerzony", "ufortyfikowany", "wojowniczy", "agresywny", "defensywny", "przytłaczający",
+    "potężny", "wybuchowy", "bezwzględny", "nieustępliwy", "dzielny", "legendarny",
+    "śmiały", "triumfalny", "dominujący", "potężny", "mocny", "zastraszający", "przerażający",
+    "nieustępliwy", "niepowstrzymany", "niszczycielski", "brutalny", "bezlitosny", "bohaterski"
+  ],
+  "ADJ_STATE": [
+    "rozbity", "zmiażdżony", "zgnieciony", "pokrojony w kostkę", "pokrojony w plastry", "przypalony", "zmiażdżony", "sproszkowany",
+    "zmielony", "posiekany", "zmiksowany", "przetarty", "starty", "obrany", "upieczony", "obsmażony",
+    "poturbowany", "pobity", "utłuczony", "poszarpany", "rozerwany", "rozdarty", "złamany", "rozłupany"
+  ],
+  "ADJ_QUALITY": [
+    "dojrzały", "świeży", "zielony", "organiczny", "surowy", "przygotowany", "przyprawiony", "najlepszy",
+    "wyborowy", "wyselekcjonowany", "premium", "wykwintny", "prosto z ogrodu", "z pola na stół", "lokalny",
+    "dziki", "uprawny", "zrównoważony", "rzemieślniczy", "ręcznie robiony", "z własnego ogródka"
+  ],
+  "VERB_ACTION": [
+    "rozbić", "uderzyć", "zmiażdżyć", "zgnieść", "pokroić w kostkę", "pokroić w plastry", "rzucić", "wystrzelić", "katapultować",
+    "zbombardować", "zaatakować", "obronić", "podbić", "ufortyfikować", "szturmować", "nacierac", "wycofać się",
+    "oblegać", "zebrać", "wymieszać", "posiekać", "zmiksować", "nabrać", "rozmieścić", "zastawić pułapkę", "otoczyć",
+    "przytłoczyć", "zniszczyć", "zburzyć", "unicestwić", "unicestwić", "szarżować", "zaangażować",
+    "uderzyć", "podbić", "pokonać", "przezwyciężyć", "obezwładnić", "pokonać", "rozgromić",
+    "odpędzić", "oprzeć się", "wytrzymać", "wytrzymać", "pchać", "ciągnąć", "przewrócić", "złamać"
+  ],
+  "VERB_ING": [
+    "rozbijanie", "uderzanie", "miażdżenie", "gniecenie", "krojenie w kostkę", "krojenie w plastry", "rzucanie", 
+    "wystrzeliwanie", "katapultowanie", "bombardowanie", "atakowanie", "bronienie", "podbijanie", 
+    "fortyfikowanie", "szturmowanie", "nacieranie", "wycofywanie się", "obleganie", "zbieranie", 
+    "mieszanie", "siekanie", "miksowanie", "nabieranie", "rozmieszczanie", "zastawianie pułapki", "otaczanie",
+    "przytłaczanie", "niszczenie", "burzenie", "unicestwianie", "unicestwianie",
+    "szarżowanie", "angażowanie", "uderzanie", "podbijanie", "przezwyciężanie", "obezwładnianie"
+  ],
+  "YEAR": [
+    "1920", "1935", "1942", "1956", "1968", "1973", "1984", "1991", "1999", "2001",
+    "2008", "2012", "2016", "2020", "2023", "2025", "2030", "2050"
+  ],
+  "TERRAIN_PREFIX": [
+    "Góra", "Dolina", "Pola", "Płaskowyż", "Okopy", "Wąwóz", 
+    "Grzbiet", "Kotlina", "Wzgórza", "Wąwóz", "Forteca", "Niziny", 
+    "Wzniesienia", "Równiny", "Pustkowia", "Ogrody", "Kanion", "Szczyty",
+    "Domena", "Królestwo", "Imperium", "Republika", "Stan", "Terytorium",
+    "Prowincja", "Księstwo", "Prefektura", "Pustkowia", "Ruiny", "Pozostałości"
+  ],
+  "NUMBER": [
+    "Jeden", "Dwa", "Trzy", "Cztery", "Pięć", "Sześć", "Siedem", "Osiem", "Dziewięć", "Dziesięć",
+    "Jedenaście", "Dwanaście", "Trzynaście", "Dwadzieścia", "Trzydzieści", "Czterdzieści", "Pięćdziesiąt", "Sto",
+    "Tysiąc", "Milion", "Miliard", "Pierwszy", "Drugi", "Trzeci", "Czwarty", "Piąty", "Dziesiąty", "Setny"
+  ]
+}

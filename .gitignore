@@ -1,8 +1,7 @@
 .direnv
 .envrc
 aidb
-assets/*
-!assets/locales/*
+assets/*.*
 dbg
 target
 Cargo.lock

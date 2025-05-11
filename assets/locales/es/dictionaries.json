@@ -1,0 +1,116 @@
+{
+  "NOUN_VEGETABLE": [
+    "aguacate", "tomate", "cebolla", "cilantro", "jalapeño", "pimiento", "maíz", "frijol",
+    "habanero", "serrano", "chile", "zanahoria", "apio", "rábano", "pepino",
+    "calabacín", "berenjena", "lechuga", "espinaca", "albahaca", "menta", "orégano", "perejil",
+    "ajo", "patata", "repollo", "brócoli", "coliflor", "calabaza", "calabaza", 
+    "champiñón", "col rizada", "puerro", "cebolleta", "chalota", "jengibre", "rúcula", "remolacha"
+  ],
+  "NOUN_DISH": [
+    "guacamole", "salsa", "pico de gallo", "nacho", "tostada", "burrito", "taco",
+    "dip", "salsa", "paté", "puré", "pasta", "chips", "quesadilla", "enchilada",
+    "chimichanga", "chalupa", "fajita", "cuenco", "plato", "combo", "mezcla", "combinado"
+  ],
+  "NOUN_KITCHEN": [
+    "mortero", "machacador", "licuadora", "cuchillo", "picadora", "molinillo", "almirez", "cuenco",
+    "mazo", "tenedor", "cuchara", "cucharón", "olla", "sartén", "tabla de cortar", "batidora",
+    "rallador", "rebanadora", "cortadora en dados", "rallador de cítricos", "pelador", "colador", "batidor", "espátula"
+  ],
+  "NOUN_WEAPON": [
+    "catapulta", "trabuquete", "escudo", "casco", "artillería", "bombarda", "munición",
+    "granada", "cañón", "ballesta", "ariete", "ballesta", "arco largo", "lanza",
+    "pica", "alabarda", "maza", "mangual", "hacha", "espada", "daga", "honda", "bomba",
+    "mina", "mortero", "cohete", "lanzador", "bláster", "mosquete", "rifle"
+  ],
+  "NOUN_VEHICLE": [
+    "tanque", "acorazado", "portaaviones", "destructor", "submarino", "avión", "helicóptero",
+    "jeep", "transporte", "coche blindado", "torre de asedio", "carro de guerra", "carro", "dreadnought",
+    "crucero", "fragata", "cañonero", "bombardero", "caza", "explorador", "buque de guerra", "camión de artillería"
+  ],
+  "NOUN_BATTLE_STRUCTURE": [
+    "fortificación", "búnker", "puesto avanzado", "barricada", "foso", "terraplén", "muro", 
+    "torre", "torreta", "fortaleza", "castillo", "ciudadela", "fortín", "bastión",
+    "reducto", "baluarte", "guarnición", "blocao", "almena", "empalizada", "trinchera"
+  ],
+  "NOUN_MILITARY_UNIT": [
+    "batallón", "ejército", "escuadra", "pelotón", "regimiento", "formación", "división", "cuerpo", 
+    "patrulla", "escuadrón", "compañía", "brigada", "legión", "falange", "caballería", "infantería",
+    "vanguardia", "retaguardia", "flanco", "destacamento", "fuerza de tarea", "comandos", "élite", "guardia"
+  ],
+  "NOUN_MILITARY_RANK": [
+    "general", "almirante", "capitán", "comandante", "teniente", "sargento", "cabo",
+    "soldado raso", "coronel", "mayor", "alférez", "oficial", "cadete", "recluta", "soldado",
+    "guerrero", "luchador", "soldado", "centinela", "guardián", "defensor", "atacante"
+  ],
+  "NOUN_BATTLE_CONCEPT": [
+    "campo de batalla", "asedio", "victoria", "derrota", "estrategia", "táctica", "combate",
+    "conflicto", "alianza", "línea del frente", "ataque", "defensa", "emboscada", "asalto",
+    "carga", "flanqueo", "maniobra", "conquista", "invasión", "retirada", "avance",
+    "refuerzos", "cerco", "ruptura", "escaramuza", "batalla", "guerra"
+  ],
+  "NOUN_TERRAIN": [
+    "jardín", "montaña", "valle", "campo", "meseta", "trinchera", "barranco", "cresta",
+    "cuenca", "colina", "desfiladero", "llanura", "altura", "planicie", "baldío",
+    "cañón", "pico", "bosque", "jungla", "desierto", "pantano", "marisma", "prado",
+    "pradera", "arboleda", "quebrada", "duna", "isla", "península", "costa", "cráter"
+  ],
+  "ADJ_TASTE": [
+    "picante", "caliente", "suave", "ácido", "sabroso", "agrio", "amargo", "dulce", "salado",
+    "salado", "penetrante", "aromático", "sabroso", "gustoso", "delicioso", "exquisito",
+    "soso", "rico", "contundente", "apetitoso", "apetecible", "refrescante"
+  ],
+  "ADJ_TEXTURE": [
+    "troceado", "cremoso", "suave", "crujiente", "crujiente", "blando", "duro", "pastoso",
+    "firme", "tierno", "jugoso", "seco", "pegajoso", "gomoso", "aterciopelado", "sedoso",
+    "granuloso", "fibroso", "masticable", "quebradizo", "escamoso", "desmenuzable"
+  ],
+  "ADJ_BATTLE": [
+    "táctico", "estratégico", "feroz", "curtido en batalla", "victorioso", "derrotado",
+    "blindado", "fortificado", "militante", "agresivo", "defensivo", "abrumador",
+    "formidable", "explosivo", "despiadado", "implacable", "valiente", "legendario",
+    "audaz", "triunfante", "dominante", "poderoso", "fuerte", "intimidante", "temible",
+    "implacable", "imparable", "devastador", "brutal", "despiadado", "heroico"
+  ],
+  "ADJ_STATE": [
+    "golpeado", "aplastado", "machacado", "cortado en dados", "rebanado", "chamuscado", "triturado", "pulverizado",
+    "picado", "troceado", "licuado", "hecho puré", "rallado", "pelado", "asado", "sellado",
+    "maltratado", "golpeado", "machacado", "desmenuzado", "rasgado", "roto", "partido", "dividido"
+  ],
+  "ADJ_QUALITY": [
+    "maduro", "fresco", "verde", "orgánico", "crudo", "preparado", "sazonado", "de primera",
+    "selecto", "selecto", "premium", "gourmet", "fresco del jardín", "de la granja a la mesa", "local",
+    "silvestre", "cultivado", "sostenible", "artesanal", "hecho a mano", "de cosecha propia"
+  ],
+  "VERB_ACTION": [
+    "aplastar", "golpear", "triturar", "machacar", "cortar en dados", "rebanar", "lanzar", "disparar", "catapultar",
+    "bombardear", "atacar", "defender", "conquistar", "fortificar", "asaltar", "avanzar", "retirarse",
+    "asediar", "cosechar", "mezclar", "picar", "licuar", "servir", "desplegar", "emboscar", "rodear",
+    "abrumar", "destruir", "demoler", "arrasar", "aniquilar", "cargar", "enfrentar",
+    "golpear", "conquistar", "vencer", "superar", "dominar", "derrotar", "derrotar",
+    "repeler", "resistir", "soportar", "aguantar", "empujar", "tirar", "derribar", "romper"
+  ],
+  "VERB_ING": [
+    "aplastando", "golpeando", "triturando", "machacando", "cortando en dados", "rebanando", "lanzando", 
+    "disparando", "catapultando", "bombardeando", "atacando", "defendiendo", "conquistando", 
+    "fortificando", "asaltando", "avanzando", "retirándose", "asediando", "cosechando", 
+    "mezclando", "picando", "licuando", "sirviendo", "desplegando", "emboscando", "rodeando",
+    "abrumando", "destruyendo", "demoliendo", "arrasando", "aniquilando",
+    "cargando", "enfrentando", "golpeando", "conquistando", "venciendo", "superando", "dominando"
+  ],
+  "YEAR": [
+    "1920", "1935", "1942", "1956", "1968", "1973", "1984", "1991", "1999", "2001",
+    "2008", "2012", "2016", "2020", "2023", "2025", "2030", "2050"
+  ],
+  "TERRAIN_PREFIX": [
+    "Monte", "Valle de", "Campos de", "Meseta de", "Trincheras de", "Barranco de", 
+    "Cresta de", "Cuenca de", "Colinas de", "Desfiladero de", "Fortaleza de", "Llanuras de", 
+    "Alturas de", "Planicies de", "Baldíos de", "Jardines de", "Cañón de", "Picos de",
+    "Dominio de", "Reino de", "Imperio de", "República de", "Estado de", "Territorio de",
+    "Provincia de", "Ducado de", "Prefectura de", "Páramos de", "Ruinas de", "Restos de"
+  ],
+  "NUMBER": [
+    "Uno", "Dos", "Tres", "Cuatro", "Cinco", "Seis", "Siete", "Ocho", "Nueve", "Diez",
+    "Once", "Doce", "Trece", "Veinte", "Treinta", "Cuarenta", "Cincuenta", "Cien",
+    "Mil", "Millón", "Mil Millones", "1º", "2º", "3º", "4º", "5º", "10º", "100º"
+  ]
+}

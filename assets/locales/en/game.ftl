@@ -1,0 +1,9 @@
+main-menu-start-game = Start Game
+main-menu-options = Options
+main-menu-quit-game = Quit Game
+main-menu-seed-label = Seed:
+main-menu-random-seed-button = Random Seed
+main-menu-terrain-preview-title = Terrain Preview
+options-title = Options
+options-language-select = Select Language:
+options-back-button = Back

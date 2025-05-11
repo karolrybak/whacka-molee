@@ -1,11 +1,15 @@
+// src/main.rs
 use bevy::prelude::*;
 
 mod game_states;
 mod localization;
 mod text_generator;
+mod main_menu; // <--- ADD THIS
+
 use game_states::AppState;
 use localization::LocalizationPlugin;
 use text_generator::TextGeneratorPlugin;
+use main_menu::MainMenuPlugin; // <--- ADD THIS
 
 fn main() {
     App::new()
@@ -21,13 +25,13 @@ fn main() {
         .init_state::<AppState>()
         .add_plugins(LocalizationPlugin)
         .add_plugins(TextGeneratorPlugin)
-        .add_systems(Startup, setup)
+        .add_plugins(MainMenuPlugin) // <--- ADD THIS
+        .add_systems(Startup, initial_setup_system) // Renamed for clarity
         .run();
 }
 
-// Initialize the game and transition to MainMenu once assets are loaded
-fn setup(mut app_state: ResMut<NextState<AppState>>) {
-    // In a real game, you would load assets here before transitioning
-    // For now, we'll just transition directly to the main menu
+// Renamed to avoid conflict if 'setup' is a common name
+fn initial_setup_system(mut app_state: ResMut<NextState<AppState>>) {
+    // This correctly transitions to MainMenu after initial setup
     app_state.set(AppState::MainMenu);
 }

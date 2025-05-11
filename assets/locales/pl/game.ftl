@@ -1,0 +1,9 @@
+main-menu-start-game = Rozpocznij Grę
+main-menu-options = Opcje
+main-menu-quit-game = Wyjdź z Gry
+main-menu-seed-label = Ziarno:
+main-menu-random-seed-button = Losowe Ziarno
+main-menu-terrain-preview-title = Podgląd Terenu
+options-title = Opcje
+options-language-select = Wybierz Język:
+options-back-button = Powrót
