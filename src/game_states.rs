@@ -1,16 +1,21 @@
 use crate::asset_manager::AssetManager;
+use crate::text_generator::WhackaMoleeGenerator;
+use macroquad::ui::Skin;
 use std::any::Any;
 
 pub struct GameContext {
     pub asset_manager: AssetManager,
     pub screen_width: f32,
     pub screen_height: f32,
+    pub text_generator: WhackaMoleeGenerator,
+    pub ui_skin: Skin,
 }
 
 #[derive(Debug, Clone, PartialEq)]
 pub enum GameViewType {
     MainMenu,
     Match,
+    Options,
 }
 
 pub enum Transition {
@@ -20,6 +25,7 @@ pub enum Transition {
     PopWithResult(Box<dyn Any>),
     Switch(GameViewType),
     ExitGame,
+    LanguageChanged(String),
 }
 
 impl PartialEq for Transition {
@@ -31,6 +37,7 @@ impl PartialEq for Transition {
             (Transition::PopWithResult(_), Transition::PopWithResult(_)) => true,
             (Transition::Switch(a), Transition::Switch(b)) => a == b,
             (Transition::ExitGame, Transition::ExitGame) => true,
+            (Transition::LanguageChanged(a), Transition::LanguageChanged(b)) => a == b,
             _ => false,
         }
     }

@@ -121,7 +121,7 @@ macro_rules! t {
                     }
                     value.into_owned()
                 }
-                None => {
+                _none => {
                     error!("Localization: CURRENT_BUNDLE is None when accessing key '{}'. Was init_localization called?", $key);
                     format!("UNINIT_LOC:{}", $key)
                 }
@@ -155,7 +155,7 @@ macro_rules! t {
                     }
                     value.into_owned()
                 }
-                None => {
+                none => {
                     error!("Localization: CURRENT_BUNDLE is None when accessing key '{}'. Was init_localization called?", $key);
                     format!("UNINIT_LOC:{}", $key)
                 }

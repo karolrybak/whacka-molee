@@ -2,13 +2,16 @@ mod asset_manager;
 mod game_states;
 mod localization;
 pub mod physics;
+mod ui_styles;
 
 mod views {
     pub mod main_menu_view;
     pub mod match_view;
+    pub mod options_view;
 
     pub use main_menu_view::MainMenuView;
     pub use match_view::MatchView;
+    pub use options_view::OptionsView;
 }
 
 mod game_objects {
@@ -17,13 +20,16 @@ mod game_objects {
     pub mod terrain;
 }
 
+mod text_generator;
+
 use macroquad::prelude::*;
 
 use asset_manager::AssetManager;
 use game_states::{GameContext, GameViewType, Transition, View};
-use views::MainMenuView;
-use views::MatchView;
-
+use text_generator::WhackaMoleeGenerator;
+use ui_styles::create_global_skin;
+use views::{MainMenuView, MatchView, OptionsView};
+use macroquad::ui::root_ui;
 struct Game {
     game_context: GameContext,
     view_stack: Vec<Box<dyn View>>,
@@ -32,16 +38,32 @@ struct Game {
 
 impl Game {
     pub async fn new() -> Self {
-        localization::init_localization("assets/locales", "en", &["en", "pl", "es", "tlh"]);
+        let initial_lang_id_str = "en";
+        localization::init_localization(
+            "assets/locales",
+            initial_lang_id_str,
+            &["en", "pl", "es", "tlh"],
+        );
+
         let asset_manager = AssetManager::new("assets").await;
-        let initial_view_type = GameViewType::MainMenu;
-        let mut game_context = GameContext {
-            asset_manager: asset_manager,
+
+        let text_generator = WhackaMoleeGenerator::new("assets/locales", initial_lang_id_str)
+            .expect("Failed to create WhackaMoleeGenerator");
+
+        let ui_skin = create_global_skin();
+
+        let game_context = GameContext {
+            asset_manager,
             screen_width: screen_width(),
             screen_height: screen_height(),
+            text_generator,
+            ui_skin,
         };
+
+        let initial_view_type = GameViewType::MainMenu;
         let mut initial_view = Self::create_view(initial_view_type.clone(), &game_context);
-        initial_view.on_enter(&mut game_context);
+        initial_view.on_enter(&game_context);
+
         Self {
             game_context,
             view_stack: vec![initial_view],
@@ -53,6 +75,7 @@ impl Game {
         match view_type {
             GameViewType::MainMenu => Box::new(MainMenuView::new(context)),
             GameViewType::Match => Box::new(MatchView::new(context)),
+            GameViewType::Options => Box::new(OptionsView::new(context)),
         }
     }
 
@@ -64,6 +87,9 @@ impl Game {
             }
 
             let dt = get_frame_time();
+
+            root_ui().push_skin(&self.game_context.ui_skin);
+
             let transition_request = {
                 let current_view = self.view_stack.last_mut().unwrap();
                 current_view.update_and_handle_input(dt, &self.game_context)
@@ -72,9 +98,12 @@ impl Game {
             self.handle_transition(transition_request);
 
             clear_background(BLACK);
+            let game_context_ref = &self.game_context;
+
             for view_idx in 0..self.view_stack.len() {
-                self.view_stack[view_idx].draw(&self.game_context);
+                self.view_stack[view_idx].draw(game_context_ref);
             }
+            root_ui().pop_skin();
 
             next_frame().await;
         }
@@ -102,6 +131,31 @@ impl Game {
                     self.is_running = false;
                 }
             }
+            Transition::LanguageChanged(new_lang_code) => {
+                if let Some(mut old_view) = self.view_stack.pop() {
+                    old_view.on_exit(&self.game_context);
+                }
+                match WhackaMoleeGenerator::new("assets/locales", &new_lang_code) {
+                    Ok(new_generator) => {
+                        self.game_context.text_generator = new_generator;
+                        info!("Text generator reloaded for language: {}", new_lang_code);
+                    }
+                    Err(e) => {
+                        error!(
+                            "Failed to recreate WhackaMoleeGenerator for language {}: {:?}",
+                            new_lang_code, e
+                        );
+                    }
+                }
+
+                if self.view_stack.is_empty() {
+                    self.is_running = false;
+                } else {
+                    if let Some(resumed_view) = self.view_stack.last_mut() {
+                        resumed_view.on_resume_with_data(&self.game_context, Box::new(()));
+                    }
+                }
+            }
             Transition::PopWithResult(data) => {
                 if let Some(mut old_view) = self.view_stack.pop() {
                     old_view.on_exit(&self.game_context);
@@ -120,9 +174,6 @@ impl Game {
                 let mut new_view = Self::create_view(new_view_type, &self.game_context);
                 new_view.on_enter(&self.game_context);
                 self.view_stack.push(new_view);
-                if self.view_stack.is_empty() {
-                    self.is_running = false;
-                }
             }
             Transition::ExitGame => {
                 self.is_running = false;
@@ -131,7 +182,7 @@ impl Game {
     }
 }
 
-#[macroquad::main("WhackaMolee - Static Assets")]
+#[macroquad::main("WhackaMolee")]
 async fn main() {
     let mut game = Game::new().await;
     game.run_loop().await;
