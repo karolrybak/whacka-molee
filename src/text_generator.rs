@@ -1,8 +1,5 @@
-
-
-
 use bevy::prelude::*;
-use rand::seq::SliceRandom; 
+use rand::seq::IndexedRandom;
 use regex::{Captures, Regex};
 use serde::{Deserialize, Serialize};
 use serde_json; 
@@ -44,18 +41,15 @@ impl WhackaMoleeGenerator {
         let lang_path = PathBuf::from(base_locales_path_str)
             .join(current_lang_id_str.to_lowercase());
 
-        let dictionaries_path = lang_path.join("generator_dictionaries.json");
-        let templates_path = lang_path.join("generator_templates.json");
+        let dictionaries_path = lang_path.join("dictionaries.json");
+        let templates_path = lang_path.join("templates.json");
 
-        let dictionaries_content = fs::read_to_string(&dictionaries_path)
-            .map_err(|e| format!("Dict read error: {}: {}", dictionaries_path.display(), e).into())?;
-        let dictionaries: Dictionaries = serde_json::from_str(&dictionaries_content)
-            .map_err(|e| format!("Dict parse error: {}: {}", dictionaries_path.display(), e).into())?;
+        let dictionaries_content = fs::read_to_string(dictionaries_path)?;
+        let dictionaries: Dictionaries = serde_json::from_str(&dictionaries_content)?;
 
-        let templates_content = fs::read_to_string(&templates_path)
-            .map_err(|e| format!("Template read error: {}: {}", templates_path.display(), e).into())?;
-        let templates: Templates = serde_json::from_str(&templates_content)
-            .map_err(|e| format!("Template parse error: {}: {}", templates_path.display(), e).into())?;
+        let templates_content = fs::read_to_string(templates_path)?;
+        let templates: Templates = serde_json::from_str(&templates_content)?;
+
 
         Ok(Self {
             dictionaries,
@@ -64,11 +58,10 @@ impl WhackaMoleeGenerator {
     }
 
     fn get_random_from_dict(&self, dict_name: &str) -> Option<String> {
-        let mut rng = rand::thread_rng();
         self.dictionaries
             .dictionaries
             .get(dict_name)
-            .and_then(|items| items.choose(&mut rng).cloned())
+            .and_then(|items| items.choose(&mut rand::rng()).cloned())
     }
 
     fn pluralize(&self, word: &str) -> String {
@@ -117,7 +110,7 @@ impl WhackaMoleeGenerator {
     }
 
     pub fn generate_tagline(&self) -> String {
-        if let Some(template) = self.templates.tagline_templates.choose(&mut rand::thread_rng()) {
+        if let Some(template) = self.templates.tagline_templates.choose(&mut rand::rng()) {
             self.process_template(template)
         } else {
             warn!("TextGen: No tagline templates available.");
@@ -126,7 +119,7 @@ impl WhackaMoleeGenerator {
     }
 
     pub fn generate_team_name(&self) -> String {
-        if let Some(template) = self.templates.team_name_templates.choose(&mut rand::thread_rng()) {
+        if let Some(template) = self.templates.team_name_templates.choose(&mut rand::rng()) {
             self.process_template(template)
         } else {
             warn!("TextGen: No team name templates available.");
@@ -173,7 +166,7 @@ impl Plugin for TextGeneratorPlugin {
 
 fn reload_text_generator_on_lang_change(
     current_lang: Res<CurrentLang>,
-    mut text_generator_res: Option<ResMut<WhackaMoleeGenerator>>,
+    text_generator_res: Option<ResMut<WhackaMoleeGenerator>>,
     mut lang_changed_event: EventReader<LanguageChangeRequest>, 
     mut commands: Commands,
 ) {

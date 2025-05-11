@@ -4,26 +4,30 @@ name = "whacka_molee_bevy"
 version = "0.2.0"
 
 [dependencies]
-bevy = {version = "0.16.0", features = ["dynamic_linking"]}
+bevy = { version = "0.16.0", features = ["bevy_image", "file_watcher", "mp3", "serialize", "wayland", "web", "webgpu"] }
 avian2d = {version = "0.3.0"}
 earcut = "0.4.4"
 fastnoise-lite = "1.1.1"
-fluent = "0.16.1"
 rand = "0.9.1"
 serde = {version = "1.0.219", features = ["derive"]}
 visioncortex = "0.8.8"
 vtracer = "0.6.0"
+fluent = "0.16.1"
+regex = "1.11.1"
+serde_json = "1.0.140"
+unic-langid = "0.9.6"
+once_cell = "1.21.3"
 
 [profile.dev]
 debug = true
 opt-level = 1
 
-[profile.dev.package."*"]
-opt-level = 3
+# [profile.dev.package."*"]
+# opt-level = 3
 
-[profile.release]
-codegen-units = 1
-debug = false
-lto = "thin"
-opt-level = 3
-strip = true
+# [profile.release]
+# codegen-units = 1
+# debug = false
+# lto = "thin"
+# opt-level = 3
+# strip = true
