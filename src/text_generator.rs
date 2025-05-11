@@ -1,15 +1,13 @@
-// karolrybak/whacka-molee/whacka-molee-351ea95a23ebe18bf0ffbcd3437412c5de79bebd/src/text_generator.rs
-// version:0.2.1
-// ----START OF FILE----
-use macroquad::prelude::{info, warn};
-use macroquad::rand::ChooseRandom; // Dodany import
+
+
+
+use bevy::prelude::*;
+use rand::seq::SliceRandom; 
 use regex::{Captures, Regex};
 use serde::{Deserialize, Serialize};
-use std::collections::HashMap;
-use std::fs;
-use std::path::PathBuf;
-// Usunięto: use rand::seq::SliceRandom;
-// Usunięto: use rand::thread_rng;
+use serde_json; 
+use std::{collections::HashMap, fs, path::PathBuf};
+use crate::localization::{CurrentLang, LanguageChangeRequest, LocalizationSystemSet};
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 struct Dictionaries {
@@ -27,7 +25,7 @@ struct Templates {
     terrain_name_templates: Vec<String>,
 }
 
-#[derive(Debug)]
+#[derive(Resource, Debug, Clone)]
 pub struct WhackaMoleeGenerator {
     dictionaries: Dictionaries,
     templates: Templates,
@@ -43,28 +41,21 @@ impl WhackaMoleeGenerator {
             current_lang_id_str, base_locales_path_str
         );
 
-        let lang_path = PathBuf::from(base_locales_path_str).join(current_lang_id_str.to_lowercase());
+        let lang_path = PathBuf::from(base_locales_path_str)
+            .join(current_lang_id_str.to_lowercase());
 
-        let dictionaries_path = lang_path.join("dictionaries.json");
-        let templates_path = lang_path.join("templates.json");
+        let dictionaries_path = lang_path.join("generator_dictionaries.json");
+        let templates_path = lang_path.join("generator_templates.json");
 
-        let dictionaries_content = fs::read_to_string(&dictionaries_path).map_err(|e| {
-            format!(
-                "Failed to read dictionaries file '{}': {}",
-                dictionaries_path.display(),
-                e
-            )
-        })?;
-        let dictionaries: Dictionaries = serde_json::from_str(&dictionaries_content)?;
+        let dictionaries_content = fs::read_to_string(&dictionaries_path)
+            .map_err(|e| format!("Dict read error: {}: {}", dictionaries_path.display(), e).into())?;
+        let dictionaries: Dictionaries = serde_json::from_str(&dictionaries_content)
+            .map_err(|e| format!("Dict parse error: {}: {}", dictionaries_path.display(), e).into())?;
 
-        let templates_content = fs::read_to_string(&templates_path).map_err(|e| {
-            format!(
-                "Failed to read templates file '{}': {}",
-                templates_path.display(),
-                e
-            )
-        })?;
-        let templates: Templates = serde_json::from_str(&templates_content)?;
+        let templates_content = fs::read_to_string(&templates_path)
+            .map_err(|e| format!("Template read error: {}: {}", templates_path.display(), e).into())?;
+        let templates: Templates = serde_json::from_str(&templates_content)
+            .map_err(|e| format!("Template parse error: {}: {}", templates_path.display(), e).into())?;
 
         Ok(Self {
             dictionaries,
@@ -73,10 +64,11 @@ impl WhackaMoleeGenerator {
     }
 
     fn get_random_from_dict(&self, dict_name: &str) -> Option<String> {
+        let mut rng = rand::thread_rng();
         self.dictionaries
             .dictionaries
             .get(dict_name)
-            .and_then(|items| items.choose().cloned())
+            .and_then(|items| items.choose(&mut rng).cloned())
     }
 
     fn pluralize(&self, word: &str) -> String {
@@ -112,7 +104,7 @@ impl WhackaMoleeGenerator {
                             word
                         }
                     } else {
-                        warn!("Dictionary key {} not found or empty.", dict_name);
+                        warn!("TextGen: Dictionary key {} not found for template.", dict_name);
                         caps.get(0).unwrap().as_str().to_string()
                     }
                 })
@@ -125,61 +117,94 @@ impl WhackaMoleeGenerator {
     }
 
     pub fn generate_tagline(&self) -> String {
-        if let Some(template) = self.templates.tagline_templates.choose() {
+        if let Some(template) = self.templates.tagline_templates.choose(&mut rand::thread_rng()) {
             self.process_template(template)
         } else {
-            warn!("No tagline templates available.");
+            warn!("TextGen: No tagline templates available.");
             "ERR_NO_TAGLINE_TEMPLATES".to_string()
         }
     }
 
     pub fn generate_team_name(&self) -> String {
-        if let Some(template) = self.templates.team_name_templates.choose() {
+        if let Some(template) = self.templates.team_name_templates.choose(&mut rand::thread_rng()) {
             self.process_template(template)
         } else {
-            warn!("No team name templates available.");
+            warn!("TextGen: No team name templates available.");
             "ERR_NO_TEAM_NAME_TEMPLATES".to_string()
         }
     }
 
     pub fn generate_terrain_name(&self) -> String {
-        if let Some(template) = self.templates.terrain_name_templates.choose() {
+        if let Some(template) = self.templates.terrain_name_templates.choose(&mut rand::thread_rng()) {
             self.process_template(template)
         } else {
-            warn!("No terrain name templates available.");
+            warn!("TextGen: No terrain name templates available.");
             "ERR_NO_TERRAIN_NAME_TEMPLATES".to_string()
         }
     }
+}
 
-    pub fn generate_examples(
-        &self,
-        generator_func: fn(&Self) -> String,
-        count: usize,
-    ) -> Vec<String> {
-        (0..count).map(|_| generator_func(self)).collect()
+pub struct TextGeneratorPlugin;
+
+impl Plugin for TextGeneratorPlugin {
+    fn build(&self, app: &mut App) {
+        let initial_lang_id_str = app.world().get_resource::<CurrentLang>()
+            .map_or_else(
+                || {
+                    warn!("TextGeneratorPlugin: CurrentLang resource not found during setup, defaulting to 'en'. Ensure LocalizationPlugin runs before TextGeneratorPlugin.");
+                    "en".to_string()
+                }, 
+                |lang| lang.0.to_string()
+            );
+
+        match WhackaMoleeGenerator::new("assets/locales", &initial_lang_id_str) {
+            Ok(generator) => {
+                app.insert_resource(generator);
+                info!("WhackaMoleeGenerator initialized for language: {}", initial_lang_id_str);
+            }
+            Err(e) => {
+                error!("Failed to initialize WhackaMoleeGenerator: {:?}", e);
+            }
+        }
+        
+        app.add_systems(Update, reload_text_generator_on_lang_change.after(LocalizationSystemSet::LanguageProcessing));
     }
 }
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct GeneratorOutput {
-    pub taglines: Vec<String>,
-    pub team_names: Vec<String>,
-    pub terrain_names: Vec<String>,
+fn reload_text_generator_on_lang_change(
+    current_lang: Res<CurrentLang>,
+    mut text_generator_res: Option<ResMut<WhackaMoleeGenerator>>,
+    mut lang_changed_event: EventReader<LanguageChangeRequest>, 
+    mut commands: Commands,
+) {
+    
+    let mut needs_reload = false;
+    if !lang_changed_event.is_empty() {
+        needs_reload = true;
+        lang_changed_event.clear(); 
+    } else if text_generator_res.is_none() && current_lang.is_added() {
+        needs_reload = true;
+    } else if current_lang.is_changed() { 
+        needs_reload = true;
+    }
+
+
+    if needs_reload {
+        let lang_code = current_lang.0.to_string();
+        info!("Attempting to reload/initialize WhackaMoleeGenerator for language: {}", lang_code);
+        match WhackaMoleeGenerator::new("assets/locales", &lang_code) {
+            Ok(new_gen) => {
+                if let Some(mut generator_instance) = text_generator_res {
+                    *generator_instance = new_gen;
+                    info!("WhackaMoleeGenerator reloaded for language: {}", lang_code);
+                } else {
+                    commands.insert_resource(new_gen);
+                    info!("WhackaMoleeGenerator initialized (on demand) for language: {}", lang_code);
+                }
+            },
+            Err(e) => error!("Failed to reload/initialize WhackaMoleeGenerator for {}: {:?}", lang_code, e),
+        }
+    }
 }
 
-pub fn generate(
-    base_locales_path: &str,
-    lang_id: &str,
-    count: usize,
-) -> Result<GeneratorOutput, Box<dyn std::error::Error>> {
-    let generator = WhackaMoleeGenerator::new(base_locales_path, lang_id)?;
 
-    Ok(GeneratorOutput {
-        taglines: generator.generate_examples(WhackaMoleeGenerator::generate_tagline, count),
-        team_names: generator.generate_examples(WhackaMoleeGenerator::generate_team_name, count),
-        terrain_names: generator.generate_examples(WhackaMoleeGenerator::generate_terrain_name, count),
-    })
-}
-// ----END OF FILE----
-// karolrybak/whacka-molee/whacka-molee-351ea95a23ebe18bf0ffbcd3437412c5de79bebd/src/text_generator.rs
-// version:0.2.1
